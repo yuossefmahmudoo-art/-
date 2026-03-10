@@ -1781,4 +1781,748 @@
                         اللهم اغفر له وارحمه وعافه واعف عنه<br>
                         وأكرم نزله ووسع مدخله وأبدله داراً خيراً من داره
                     </p>
- 
+                    <div class="hero-date">
+                        <i class="fas fa-heart"></i>
+                        <span>نسأل الله أن يتقبله في الصالحين</span>
+                    </div>
+                </div>
+                
+                <div class="scroll-indicator">
+                    <span>اسحب للأسفل</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-icon">📖</span>
+                        <div class="stat-number" id="fatihaCount">0</div>
+                        <div class="stat-label">فاتحة</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🤲</span>
+                        <div class="stat-number" id="duaCount">0</div>
+                        <div class="stat-label">دعاء</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">📿</span>
+                        <div class="stat-number" id="tasbihTotalCount">0</div>
+                        <div class="stat-label">تسبيحة</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">💫</span>
+                        <div class="stat-number" id="shareCount">0</div>
+                        <div class="stat-label">مشاركة</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <div class="actions-grid">
+                    <div class="action-card fatiha" onclick="openFatihaModal()">
+                        <span class="action-icon">📖</span>
+                        <div class="action-title">اقرأ الفاتحة</div>
+                        <div class="action-desc">اهدِ ثواب الفاتحة لروحه الطاهرة</div>
+                    </div>
+                    <div class="action-card dua" onclick="openDuaModal()">
+                        <span class="action-icon">🤲</span>
+                        <div class="action-title">ادعُ له</div>
+                        <div class="action-desc">الدعاء للميت من أعظم الهدايا</div>
+                    </div>
+                    <div class="action-card tasbih" onclick="scrollToSection('tasbih')">
+                        <span class="action-icon">📿</span>
+                        <div class="action-title">سبّح له</div>
+                        <div class="action-desc">أهدِ له ثواب التسبيح</div>
+                    </div>
+                    <div class="action-card quran" onclick="openSurahModal()">
+                        <span class="action-icon">📕</span>
+                        <div class="action-title">اقرأ قرآن</div>
+                        <div class="action-desc">سورة الإخلاص والمعوذتين</div>
+                    </div>
+                    <div class="action-card zikr" onclick="openZikrModal()">
+                        <span class="action-icon">✨</span>
+                        <div class="action-title">أذكار</div>
+                        <div class="action-desc">أهدِ ثواب الذكر لروحه</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Duas Section -->
+            <section class="duas-section" id="duas">
+                <div class="section-header">
+                    <span class="section-icon">🤲</span>
+                    <h2 class="section-title">أدعية للميت</h2>
+                    <p class="section-subtitle">اقرأ الأدعية واهدِ الثواب لروحه الطاهرة</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="duas-slider-container">
+                    <div class="duas-slider" id="duasSlider">
+                        <!-- Duas will be inserted here -->
+                    </div>
+                    <div class="duas-controls">
+                        <button class="duas-arrow" onclick="prevDua()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="duas-dots" id="duasDots"></div>
+                        <button class="duas-arrow" onclick="nextDua()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasbih Section -->
+            <section class="tasbih-section" id="tasbih">
+                <div class="section-header">
+                    <span class="section-icon">📿</span>
+                    <h2 class="section-title">عداد التسبيح</h2>
+                    <p class="section-subtitle">سبّح واهدِ الثواب لروحه</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="tasbih-container">
+                    <div class="tasbih-display">
+                        <div class="tasbih-count" id="tasbihCount">0</div>
+                        <div class="tasbih-target">الهدف: <span id="tasbihTarget">33</span></div>
+                    </div>
+                    
+                    <div class="tasbih-text" id="tasbihText">سُبْحَانَ اللَّهِ</div>
+                    
+                    <button class="tasbih-btn" id="tasbihBtn" onclick="addTasbih()">
+                        <i class="fas fa-hand-pointer"></i>
+                    </button>
+                    
+                    <div class="tasbih-options">
+                        <button class="tasbih-option active" onclick="changeTasbih(this, 'سُبْحَانَ اللَّهِ', 33)">سبحان الله (33)</button>
+                        <button class="tasbih-option" onclick="changeTasbih(this, 'الْحَمْدُ لِلَّهِ', 33)">الحمد لله (33)</button>
+                        <button class="tasbih-option" onclick="changeTasbih(this, 'اللَّهُ أَكْبَرُ', 34)">الله أكبر (34)</button>
+                        <button class="tasbih-option" onclick="changeTasbih(this, 'لَا إِلَٰهَ إِلَّا اللَّهُ', 100)">لا إله إلا الله (100)</button>
+                    </div>
+                    
+                    <button class="tasbih-reset" onclick="resetTasbih()">
+                        <i class="fas fa-redo"></i> إعادة العداد
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quran Section -->
+            <section class="quran-section">
+                <div class="quran-card">
+                    <div class="quran-icon">📖</div>
+                    <p class="quran-verse">
+                        ﴿ إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَمَلُهُ إِلَّا مِنْ ثَلَاثٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ ﴾
+                    </p>
+                    <div class="quran-reference">
+                        <i class="fas fa-bookmark"></i>
+                        <span>رواه مسلم</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charity Section -->
+            <section class="charity-section">
+                <div class="section-header">
+                    <span class="section-icon">💚</span>
+                    <h2 class="section-title">أنواع الصدقة الجارية</h2>
+                    <p class="section-subtitle">اختر نوع الصدقة التي تود إهداء ثوابها</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="charity-grid">
+                    <div class="charity-card" onclick="selectCharity(this, 'سقيا الماء')">
+                        <span class="charity-icon">💧</span>
+                        <div class="charity-name">سقيا الماء</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'بناء مسجد')">
+                        <span class="charity-icon">🕌</span>
+                        <div class="charity-name">بناء مسجد</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'نشر العلم')">
+                        <span class="charity-icon">📚</span>
+                        <div class="charity-name">نشر العلم</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'غرس الأشجار')">
+                        <span class="charity-icon">🌳</span>
+                        <div class="charity-name">غرس الأشجار</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'إطعام الطعام')">
+                        <span class="charity-icon">🍞</span>
+                        <div class="charity-name">إطعام الطعام</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'كفالة يتيم')">
+                        <span class="charity-icon">👶</span>
+                        <div class="charity-name">كفالة يتيم</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'بناء مدرسة')">
+                        <span class="charity-icon">🏫</span>
+                        <div class="charity-name">بناء مدرسة</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'علاج مريض')">
+                        <span class="charity-icon">🏥</span>
+                        <div class="charity-name">علاج مريض</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'حفر بئر')">
+                        <span class="charity-icon">🚰</span>
+                        <div class="charity-name">حفر بئر</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'طباعة مصاحف')">
+                        <span class="charity-icon">📕</span>
+                        <div class="charity-name">طباعة مصاحف</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'كسوة الفقراء')">
+                        <span class="charity-icon">👕</span>
+                        <div class="charity-name">كسوة الفقراء</div>
+                    </div>
+                    <div class="charity-card" onclick="selectCharity(this, 'إفطار صائم')">
+                        <span class="charity-icon">🍽️</span>
+                        <div class="charity-name">إفطار صائم</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Share Section -->
+            <section class="share-section" id="share">
+                <div class="share-container">
+                    <div class="section-header" style="padding-top: 0;">
+                        <span class="section-icon">📤</span>
+                        <h2 class="section-title">شارك ليصلك الأجر</h2>
+                        <p class="section-subtitle">انشر الصدقة ليدعو له الجميع وتكسب الأجر</p>
+                        <div class="section-line"></div>
+                    </div>
+                    
+                    <div class="share-grid">
+                        <button class="share-btn share-whatsapp" onclick="shareOn('whatsapp')">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button class="share-btn share-facebook" onclick="shareOn('facebook')">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="share-btn share-twitter" onclick="shareOn('twitter')">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="share-btn share-telegram" onclick="shareOn('telegram')">
+                            <i class="fab fa-telegram-plane"></i>
+                        </button>
+                        <button class="share-btn share-instagram" onclick="shareOn('instagram')">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                        <button class="share-btn share-snapchat" onclick="shareOn('snapchat')">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </button>
+                        <button class="share-btn share-tiktok" onclick="shareOn('tiktok')">
+                            <i class="fab fa-tiktok"></i>
+                        </button>
+                        <button class="share-btn share-messenger" onclick="shareOn('messenger')">
+                            <i class="fab fa-facebook-messenger"></i>
+                        </button>
+                        <button class="share-btn share-linkedin" onclick="shareOn('linkedin')">
+                            <i class="fab fa-linkedin-in"></i>
+                        </button>
+                        <button class="share-btn share-email" onclick="shareOn('email')">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                        <button class="share-btn share-sms" onclick="shareOn('sms')">
+                            <i class="fas fa-comment-sms"></i>
+                        </button>
+                        <button class="share-btn share-copy" onclick="copyShareText()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prayers Section -->
+            <section class="prayers-section">
+                <div class="section-header">
+                    <span class="section-icon">💬</span>
+                    <h2 class="section-title">أضف دعاءك</h2>
+                    <p class="section-subtitle">ادعُ له وشارك دعاءك مع الآخرين</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="prayers-container">
+                    <div class="prayers-input-container">
+                        <input type="text" class="prayers-input" id="prayerInput" placeholder="اكتب دعاءك هنا..." maxlength="200">
+                        <button class="prayers-submit" onclick="addPrayer()">أضف 🤲</button>
+                    </div>
+                    <div class="prayers-list" id="prayersList"></div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="footer-dua">
+                    اللهم اغفر لـ "ربيع" وارحمه<br>
+                    وأسكنه الفردوس الأعلى من الجنة<br>
+                    واجعل قبره روضة من رياض الجنة 🤲
+                </p>
+                <p class="footer-text">
+                    صُنع بكل <span class="footer-heart">❤️</span> لإهداء الثواب لروحه الطاهرة
+                </p>
+                <p class="footer-text">
+                    إنا لله وإنا إليه راجعون
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span class="toast-icon"></span>
+        <span class="toast-text"></span>
+    </div>
+
+    <!-- Fatiha Modal -->
+    <div class="modal-overlay" id="fatihaModal">
+        <div class="modal">
+            <div class="modal-icon">📖</div>
+            <h3 class="modal-title">سورة الفاتحة</h3>
+            <div class="modal-content">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ❁<br>
+                الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ❁<br>
+                الرَّحْمَٰنِ الرَّحِيمِ ❁<br>
+                مَالِكِ يَوْمِ الدِّينِ ❁<br>
+                إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ❁<br>
+                اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ❁<br>
+                صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ ❁<br>
+                غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ❁<br>
+                آمين 🤲
+            </div>
+            <button class="modal-btn" onclick="closeFatihaModal()">
+                تم القراءة ✓
+            </button>
+        </div>
+    </div>
+
+    <!-- Dua Modal -->
+    <div class="modal-overlay" id="duaModal">
+        <div class="modal">
+            <div class="modal-icon">🤲</div>
+            <h3 class="modal-title">دعاء للميت</h3>
+            <div class="modal-content">
+                اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ<br>
+                وَعَافِهِ وَاعْفُ عَنْهُ<br>
+                وَأَكْرِمْ نُزُلَهُ وَوَسِّعْ مُدْخَلَهُ<br>
+                وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ<br>
+                وَنَقِّهِ مِنَ الْخَطَايَا<br>
+                كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ<br>
+                آمين 🤲
+            </div>
+            <button class="modal-btn" onclick="closeDuaModal()">
+                آمين - تم الدعاء ✓
+            </button>
+        </div>
+    </div>
+
+    <!-- Surah Modal -->
+    <div class="modal-overlay" id="surahModal">
+        <div class="modal">
+            <div class="modal-icon">📕</div>
+            <h3 class="modal-title">سورة الإخلاص</h3>
+            <div class="modal-content">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br><br>
+                قُلْ هُوَ اللَّهُ أَحَدٌ ❁<br>
+                اللَّهُ الصَّمَدُ ❁<br>
+                لَمْ يَلِدْ وَلَمْ يُولَدْ ❁<br>
+                وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ❁
+            </div>
+            <button class="modal-btn" onclick="closeSurahModal()">
+                تم القراءة ✓
+            </button>
+        </div>
+    </div>
+
+    <!-- Zikr Modal -->
+    <div class="modal-overlay" id="zikrModal">
+        <div class="modal">
+            <div class="modal-icon">✨</div>
+            <h3 class="modal-title">أذكار مهداة لروحه</h3>
+            <div class="modal-content" style="font-size: 22px;">
+                سُبْحَانَ اللَّهِ وَبِحَمْدِهِ<br>
+                سُبْحَانَ اللَّهِ الْعَظِيمِ<br><br>
+                لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ<br>
+                لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ<br>
+                وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ<br><br>
+                أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ<br>
+                وَأَتُوبُ إِلَيْهِ
+            </div>
+            <button class="modal-btn" onclick="closeZikrModal()">
+                تم القراءة ✓
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ===== DATA =====
+        const duas = [
+            { arabic: "اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ", translation: "اللهم اغفر له وارحمه وعافه واعف عنه", source: "صحيح مسلم" },
+            { arabic: "اللَّهُمَّ أَكْرِمْ نُزُلَهُ وَوَسِّعْ مُدْخَلَهُ وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ", translation: "اللهم أكرم نزله ووسع مدخله", source: "صحيح مسلم" },
+            { arabic: "اللَّهُمَّ أَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ وَأَهْلًا خَيْرًا مِنْ أَهْلِهِ", translation: "اللهم أبدله داراً خيراً من داره", source: "صحيح مسلم" },
+            { arabic: "اللَّهُمَّ نَقِّهِ مِنَ الْخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ", translation: "اللهم نقه من الخطايا", source: "صحيح البخاري" },
+            { arabic: "اللَّهُمَّ أَدْخِلْهُ الْجَنَّةَ وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ", translation: "اللهم أدخله الجنة وأعذه من عذاب القبر", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ اجْعَلْ قَبْرَهُ رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ", translation: "اللهم اجعل قبره روضة من رياض الجنة", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ آنِسْ وَحْشَتَهُ وَارْحَمْ غُرْبَتَهُ وَقِهِ فِتْنَةَ الْقَبْرِ", translation: "اللهم آنس وحشته وارحم غربته", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ ثَبِّتْهُ عِنْدَ السُّؤَالِ وَلَقِّنْهُ حُجَّتَهُ", translation: "اللهم ثبته عند السؤال", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ اجْعَلْهُ فِي الرَّفِيقِ الأَعْلَى مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ", translation: "اللهم اجعله في الرفيق الأعلى", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ لَا تَحْرِمْنَا أَجْرَهُ وَلَا تَفْتِنَّا بَعْدَهُ وَاغْفِرْ لَنَا وَلَهُ", translation: "اللهم لا تحرمنا أجره", source: "دعاء الجنازة" },
+            { arabic: "اللَّهُمَّ إِنَّهُ عَبْدُكَ وَابْنُ عَبْدِكَ احْتَاجَ إِلَى رَحْمَتِكَ وَأَنْتَ غَنِيٌّ عَنْ عَذَابِهِ", translation: "اللهم إنه عبدك ابن عبدك", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ عَامِلْهُ بِمَا أَنْتَ أَهْلُهُ وَلَا تُعَامِلْهُ بِمَا هُوَ أَهْلُهُ", translation: "اللهم عامله بما أنت أهله", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ اجْزِهِ عَنِ الإِحْسَانِ إِحْسَانًا وَعَنِ الإِسَاءَةِ عَفْوًا وَغُفْرَانًا", translation: "اللهم اجزه عن الإحسان إحساناً", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ اجْعَلْ نُورًا فِي قَبْرِهِ وَنُورًا فِي قَلْبِهِ", translation: "اللهم اجعل نوراً في قبره", source: "دعاء مأثور" },
+            { arabic: "اللَّهُمَّ افْسَحْ لَهُ فِي قَبْرِهِ مَدَّ بَصَرِهِ", translation: "اللهم افسح له في قبره", source: "دعاء مأثور" }
+        ];
+
+        // ===== STATE =====
+        let state = JSON.parse(localStorage.getItem('sadaqa_rabee_v2')) || {
+            fatiha: 0,
+            dua: 0,
+            tasbih: 0,
+            share: 0,
+            prayers: []
+        };
+
+        let currentDua = 0;
+        let currentTasbih = 0;
+        let tasbihTarget = 33;
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createFloatingElements();
+            createIntroParticles();
+            initDuas();
+            updateStats();
+            loadPrayers();
+
+            // Loading sequence
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+                document.getElementById('introScreen').classList.add('visible');
+            }, 2500);
+        });
+
+        // ===== BACKGROUND EFFECTS =====
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['✨', '🌙', '⭐', '💫'];
+            for (let i = 0; i < 15; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-element';
+                el.textContent = elements[Math.floor(Math.random() * elements.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = (15 + Math.random() * 15) + 's';
+                el.style.animationDelay = Math.random() * 20 + 's';
+                container.appendChild(el);
+            }
+        }
+
+        function createIntroParticles() {
+            const container = document.getElementById('introParticles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'intro-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 100 + 50) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // ===== INTRO & NAVIGATION =====
+        function enterSite() {
+            document.getElementById('introScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+            setTimeout(() => {
+                document.getElementById('navbar').classList.add('visible');
+            }, 500);
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ===== STATS =====
+        function updateStats() {
+            document.getElementById('fatihaCount').textContent = state.fatiha;
+            document.getElementById('duaCount').textContent = state.dua;
+            document.getElementById('tasbihTotalCount').textContent = state.tasbih;
+            document.getElementById('shareCount').textContent = state.share;
+            saveState();
+        }
+
+        function saveState() {
+            localStorage.setItem('sadaqa_rabee_v2', JSON.stringify(state));
+        }
+
+        // ===== TOAST =====
+        function showToast(message, icon = '✓') {
+            const toast = document.getElementById('toast');
+            toast.querySelector('.toast-icon').textContent = icon;
+            toast.querySelector('.toast-text').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // ===== MODALS =====
+        function openFatihaModal() {
+            document.getElementById('fatihaModal').classList.add('show');
+        }
+
+        function closeFatihaModal() {
+            document.getElementById('fatihaModal').classList.remove('show');
+            state.fatiha++;
+            updateStats();
+            showToast('جزاك الله خيراً - أُهديت الفاتحة لروحه', '📖');
+        }
+
+        function openDuaModal() {
+            document.getElementById('duaModal').classList.add('show');
+        }
+
+        function closeDuaModal() {
+            document.getElementById('duaModal').classList.remove('show');
+            state.dua++;
+            updateStats();
+            showToast('اللهم آمين - تم الدعاء له', '🤲');
+        }
+
+        function openSurahModal() {
+            document.getElementById('surahModal').classList.add('show');
+        }
+
+        function closeSurahModal() {
+            document.getElementById('surahModal').classList.remove('show');
+            showToast('أُهدي ثواب سورة الإخلاص لروحه', '📕');
+        }
+
+        function openZikrModal() {
+            document.getElementById('zikrModal').classList.add('show');
+        }
+
+        function closeZikrModal() {
+            document.getElementById('zikrModal').classList.remove('show');
+            showToast('أُهدي ثواب الأذكار لروحه', '✨');
+        }
+
+        // Close modals on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('show');
+                }
+            });
+        });
+
+        // ===== DUAS SLIDER =====
+        function initDuas() {
+            const slider = document.getElementById('duasSlider');
+            const dots = document.getElementById('duasDots');
+            
+            duas.forEach((dua, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'dua-slide';
+                slide.innerHTML = `
+                    <div class="dua-number">${index + 1}</div>
+                    <p class="dua-arabic">${dua.arabic}</p>
+                    <div class="dua-source">
+                        <i class="fas fa-book"></i>
+                        <span>${dua.source}</span>
+                    </div>
+                `;
+                slider.appendChild(slide);
+
+                const dot = document.createElement('div');
+                dot.className = 'duas-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToDua(index);
+                dots.appendChild(dot);
+            });
+        }
+
+        function updateDuaSlider() {
+            document.getElementById('duasSlider').style.transform = `translateX(${currentDua * 100}%)`;
+            document.querySelectorAll('.duas-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentDua);
+            });
+        }
+
+        function nextDua() {
+            currentDua = (currentDua + 1) % duas.length;
+            updateDuaSlider();
+        }
+
+        function prevDua() {
+            currentDua = (currentDua - 1 + duas.length) % duas.length;
+            updateDuaSlider();
+        }
+
+        function goToDua(index) {
+            currentDua = index;
+            updateDuaSlider();
+        }
+
+        // Auto slide
+        setInterval(nextDua, 10000);
+
+        // ===== TASBIH =====
+        function addTasbih() {
+            currentTasbih++;
+            state.tasbih++;
+            document.getElementById('tasbihCount').textContent = currentTasbih;
+            updateStats();
+
+            const btn = document.getElementById('tasbihBtn');
+            btn.classList.add('clicked');
+            setTimeout(() => btn.classList.remove('clicked'), 300);
+
+            if (currentTasbih === tasbihTarget) {
+                showToast(`ما شاء الله! أتممت ${tasbihTarget} تسبيحة 🎉`, '📿');
+                setTimeout(() => {
+                    currentTasbih = 0;
+                    document.getElementById('tasbihCount').textContent = 0;
+                }, 2000);
+            }
+        }
+
+        function changeTasbih(el, text, target) {
+            document.querySelectorAll('.tasbih-option').forEach(opt => opt.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('tasbihText').textContent = text;
+            document.getElementById('tasbihTarget').textContent = target;
+            tasbihTarget = target;
+            currentTasbih = 0;
+            document.getElementById('tasbihCount').textContent = 0;
+        }
+
+        function resetTasbih() {
+            currentTasbih = 0;
+            document.getElementById('tasbihCount').textContent = 0;
+        }
+
+        // ===== CHARITY =====
+        function selectCharity(el, name) {
+            document.querySelectorAll('.charity-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            showToast(`بارك الله فيك - نية ${name}`, '💚');
+        }
+
+        // ===== SHARE =====
+        const shareText = `صدقة جارية على روح المرحوم "ربيع" 🕌
+
+اللهم اغفر له وارحمه وأسكنه فسيح جناتك 🤲
+
+📖 اقرأ الفاتحة على روحه وادعُ له بالرحمة والمغفرة
+
+#صدقة_جارية #دعاء_للميت`;
+
+        function shareOn(platform) {
+            state.share++;
+            updateStats();
+            
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(shareText);
+            
+            const urls = {
+                whatsapp: `https://wa.me/?text=${text}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}`,
+                telegram: `https://t.me/share/url?url=${url}&text=${text}`,
+                instagram: `https://www.instagram.com/`,
+                snapchat: `https://www.snapchat.com/`,
+                tiktok: `https://www.tiktok.com/`,
+                messenger: `https://www.facebook.com/dialog/send?link=${url}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+                email: `mailto:?subject=${encodeURIComponent('صدقة جارية')}&body=${text}`,
+                sms: `sms:?body=${text}`
+            };
+
+            if (urls[platform]) {
+                window.open(urls[platform], '_blank');
+            }
+            showToast('جزاك الله خيراً على المشاركة', '📤');
+        }
+
+        function copyShareText() {
+            navigator.clipboard.writeText(shareText + '\n\n' + window.location.href);
+            state.share++;
+            updateStats();
+            showToast('تم نسخ النص', '📋');
+        }
+
+        // ===== PRAYERS =====
+        function addPrayer() {
+            const input = document.getElementById('prayerInput');
+            const text = input.value.trim();
+            
+            if (!text) {
+                showToast('اكتب دعاءك أولاً', '⚠️');
+                return;
+            }
+
+            const prayer = {
+                id: Date.now(),
+                text: text,
+                time: new Date().toLocaleString('ar-EG')
+            };
+
+            state.prayers.unshift(prayer);
+            state.dua++;
+            saveState();
+            updateStats();
+            renderPrayers();
+            input.value = '';
+            showToast('تم إضافة دعائك - اللهم آمين', '🤲');
+        }
+
+        function loadPrayers() {
+            renderPrayers();
+        }
+
+        function renderPrayers() {
+            const list = document.getElementById('prayersList');
+            list.innerHTML = state.prayers.slice(0, 20).map(prayer => `
+                <div class="prayer-item">
+                    <div class="prayer-avatar">🤲</div>
+                    <div class="prayer-content">
+                        <div class="prayer-name">زائر كريم</div>
+                        <div class="prayer-text">${prayer.text}</div>
+                        <div class="prayer-time">${prayer.time}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Enter key for prayer input
+        document.getElementById('prayerInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addPrayer();
+        });
+
+        // ===== SCROLL HANDLING =====
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
